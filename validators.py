@@ -3,7 +3,7 @@ Request validation schemas using Pydantic.
 Ensures data integrity and security for all API endpoints.
 """
 
-from pydantic import BaseModel, EmailStr, Field, field_validator
+from pydantic import BaseModel, EmailStr, validator
 from typing import Optional
 import re
 from decimal import Decimal
@@ -11,21 +11,31 @@ from decimal import Decimal
 
 class UserRegistrationSchema(BaseModel):
     """Validate user registration data."""
-    full_name: str = Field(..., min_length=2, max_length=100, description="User's full name")
-    email: EmailStr = Field(..., description="Valid email address")
-    password: str = Field(..., min_length=8, max_length=255, description="Password (min 8 chars)")
-    tax_id: str = Field(..., min_length=5, max_length=20, description="Tax ID or SSN")
-    doc_type: Optional[str] = Field(default="National_ID", description="Document type for KYC")
-    doc_num: Optional[str] = Field(default="PENDING", description="Document number")
-    initial_pin: str = Field(..., min_length=4, max_length=6, description="4-6 digit transaction PIN")
-    branch_id: Optional[str] = Field(None, min_length=36, max_length=36, description="Branch UUID")
+    full_name: str
+    email: EmailStr
+    password: str
+    tax_id: str
+    doc_type: str = "National_ID"
+    doc_num: str = "PENDING"
+    initial_pin: str
 
-    @field_validator('password')
+    class Config:
+        validate_assignment = True
+
+    @validator('full_name')
+    @classmethod
+    def validate_full_name(cls, v: str) -> str:
+        """Validate full name length."""
+        if len(v) < 2 or len(v) > 100:
+            raise ValueError('Full name must be between 2 and 100 characters')
+        return v
+
+    @validator('password')
     @classmethod
     def validate_password_strength(cls, v: str) -> str:
         """Ensure password has minimum security requirements."""
-        if len(v) < 8:
-            raise ValueError('Password must be at least 8 characters long')
+        if len(v) < 8 or len(v) > 255:
+            raise ValueError('Password must be between 8 and 255 characters')
         if not re.search(r'[A-Z]', v):
             raise ValueError('Password must contain at least one uppercase letter')
         if not re.search(r'[a-z]', v):
@@ -34,18 +44,22 @@ class UserRegistrationSchema(BaseModel):
             raise ValueError('Password must contain at least one digit')
         return v
 
-    @field_validator('tax_id')
+    @validator('tax_id')
     @classmethod
     def validate_tax_id(cls, v: str) -> str:
         """Validate tax ID format (alphanumeric only)."""
+        if len(v) < 5 or len(v) > 20:
+            raise ValueError('Tax ID must be between 5 and 20 characters')
         if not re.match(r'^[A-Za-z0-9\-]+$', v):
             raise ValueError('Tax ID must contain only letters, numbers, and hyphens')
         return v.upper()
 
-    @field_validator('initial_pin')
+    @validator('initial_pin')
     @classmethod
     def validate_pin(cls, v: str) -> str:
         """Validate PIN is numeric."""
+        if len(v) < 4 or len(v) > 6:
+            raise ValueError('PIN must be between 4 and 6 characters')
         if not v.isdigit():
             raise ValueError('PIN must contain only numbers')
         return v
@@ -53,19 +67,31 @@ class UserRegistrationSchema(BaseModel):
 
 class LoginSchema(BaseModel):
     """Validate login credentials."""
-    email: EmailStr = Field(..., description="User email")
-    password: str = Field(..., min_length=1, description="User password")
+    email: EmailStr
+    password: str
 
 
 class DepositSchema(BaseModel):
     """Validate deposit transaction."""
-    account_id: str = Field(..., min_length=36, max_length=36, description="Account UUID")
-    amount: Decimal = Field(..., gt=0, le=1000000, description="Deposit amount (positive)")
+    account_id: str
+    amount: Decimal
 
-    @field_validator('amount')
+    @validator('account_id')
+    @classmethod
+    def validate_account_id(cls, v: str) -> str:
+        """Validate account ID length."""
+        if len(v) != 36:
+            raise ValueError('Account ID must be exactly 36 characters')
+        return v
+
+    @validator('amount')
     @classmethod
     def validate_amount(cls, v: Decimal) -> Decimal:
-        """Ensure amount has max 2 decimal places."""
+        """Ensure amount is positive and has max 2 decimal places."""
+        if v <= 0:
+            raise ValueError('Amount must be positive')
+        if v > 1000000:
+            raise ValueError('Amount cannot exceed 1000000')
         if v.as_tuple().exponent < -2:
             raise ValueError('Amount cannot have more than 2 decimal places')
         return v
@@ -73,74 +99,144 @@ class DepositSchema(BaseModel):
 
 class WithdrawalSchema(BaseModel):
     """Validate withdrawal transaction."""
-    account_id: str = Field(..., min_length=36, max_length=36, description="Account UUID")
-    amount: Decimal = Field(..., gt=0, le=1000000, description="Withdrawal amount (positive)")
-    pin: str = Field(..., min_length=4, max_length=6, description="Transaction PIN")
+    account_id: str
+    amount: Decimal
+    pin: str
 
+    @validator('account_id')
+    @classmethod
+    def validate_account_id(cls, v: str) -> str:
+        """Validate account ID length."""
+        if len(v) != 36:
+            raise ValueError('Account ID must be exactly 36 characters')
+        return v
 
-    @field_validator('amount')
+    @validator('amount')
     @classmethod
     def validate_amount(cls, v: Decimal) -> Decimal:
-        """Ensure amount has max 2 decimal places."""
+        """Ensure amount is positive and has max 2 decimal places."""
+        if v <= 0:
+            raise ValueError('Amount must be positive')
+        if v > 1000000:
+            raise ValueError('Amount cannot exceed 1000000')
         if v.as_tuple().exponent < -2:
             raise ValueError('Amount cannot have more than 2 decimal places')
         return v
 
-
-class TransferSchema(BaseModel):
-    """Validate transfer transaction."""
-    from_account: str = Field(..., min_length=36, max_length=36, description="Sender account UUID")
-    to_account: str = Field(..., min_length=36, max_length=36, description="Receiver account UUID")
-    amount: Decimal = Field(..., gt=0, le=1000000, description="Transfer amount (positive)")
-    pin: str = Field(..., min_length=4, max_length=6, description="Transaction PIN")
-
-    @field_validator('amount')
-    @classmethod
-    def validate_amount(cls, v: Decimal) -> Decimal:
-        """Ensure amount has max 2 decimal places."""
-        if v.as_tuple().exponent < -2:
-            raise ValueError('Amount cannot have more than 2 decimal places')
-        return v
-
-    @field_validator('to_account')
-    @classmethod
-    def validate_different_accounts(cls, v: str, info) -> str:
-        """Ensure sender and receiver are different."""
-        if 'from_account' in info.data and v == info.data['from_account']:
-            raise ValueError('Cannot transfer to the same account')
-        return v
-
-
-class CreateAccountSchema(BaseModel):
-    """Validate new account creation."""
-    account_type: str = Field(..., pattern="^(savings|checking)$", description="Account Type")
-    pin: str = Field(..., min_length=4, max_length=6, description="Account PIN")
-    initial_deposit: float = Field(0.0, ge=0, description="Initial deposit amount")
-
-    @field_validator('pin')
+    @validator('pin')
     @classmethod
     def validate_pin(cls, v: str) -> str:
+        """Validate PIN format."""
+        if len(v) < 4 or len(v) > 6:
+            raise ValueError('PIN must be between 4 and 6 characters')
         if not v.isdigit():
             raise ValueError('PIN must contain only numbers')
         return v
 
 
+class TransferSchema(BaseModel):
+    """Validate transfer transaction."""
+    from_account: str
+    to_account: str
+    amount: Decimal
+    pin: str
+
+    @validator('from_account', 'to_account')
+    @classmethod
+    def validate_account_id(cls, v: str) -> str:
+        """Validate account ID length."""
+        if len(v) != 36:
+            raise ValueError('Account ID must be exactly 36 characters')
+        return v
+
+    @validator('amount')
+    @classmethod
+    def validate_amount(cls, v: Decimal) -> Decimal:
+        """Ensure amount is positive and has max 2 decimal places."""
+        if v <= 0:
+            raise ValueError('Amount must be positive')
+        if v > 1000000:
+            raise ValueError('Amount cannot exceed 1000000')
+        if v.as_tuple().exponent < -2:
+            raise ValueError('Amount cannot have more than 2 decimal places')
+        return v
+
+    @validator('to_account')
+    @classmethod
+    def validate_different_accounts(cls, v: str, values) -> str:
+        """Ensure sender and receiver are different."""
+        if 'from_account' in values and v == values['from_account']:
+            raise ValueError('Cannot transfer to the same account')
+        return v
+
+    @validator('pin')
+    @classmethod
+    def validate_pin(cls, v: str) -> str:
+        """Validate PIN format."""
+        if len(v) < 4 or len(v) > 6:
+            raise ValueError('PIN must be between 4 and 6 characters')
+        if not v.isdigit():
+            raise ValueError('PIN must contain only numbers')
+        return v
+
+
+class CreateAccountSchema(BaseModel):
+    """Validate new account creation."""
+    account_type: str
+    pin: str
+    initial_deposit: float = 0.0
+
+    @validator('account_type')
+    @classmethod
+    def validate_account_type(cls, v: str) -> str:
+        """Validate account type."""
+        if v not in ['savings', 'checking']:
+            raise ValueError('Account type must be either "savings" or "checking"')
+        return v
+
+    @validator('pin')
+    @classmethod
+    def validate_pin(cls, v: str) -> str:
+        """Validate PIN format."""
+        if len(v) < 4 or len(v) > 6:
+            raise ValueError('PIN must be between 4 and 6 characters')
+        if not v.isdigit():
+            raise ValueError('PIN must contain only numbers')
+        return v
+
+    @validator('initial_deposit')
+    @classmethod
+    def validate_initial_deposit(cls, v: float) -> float:
+        """Validate initial deposit."""
+        if v < 0:
+            raise ValueError('Initial deposit cannot be negative')
+        return v
+
+
 class PasswordResetRequestSchema(BaseModel):
     """Validate password reset request."""
-    email: EmailStr = Field(..., description="User email for password reset")
+    email: EmailStr
 
 
 class PasswordResetSchema(BaseModel):
     """Validate password reset completion."""
-    token: str = Field(..., min_length=1, description="Password reset token")
-    new_password: str = Field(..., min_length=8, max_length=255, description="New password")
+    token: str
+    new_password: str
 
-    @field_validator('new_password')
+    @validator('token')
+    @classmethod
+    def validate_token(cls, v: str) -> str:
+        """Validate token."""
+        if len(v) < 1:
+            raise ValueError('Token cannot be empty')
+        return v
+
+    @validator('new_password')
     @classmethod
     def validate_password_strength(cls, v: str) -> str:
         """Ensure password has minimum security requirements."""
-        if len(v) < 8:
-            raise ValueError('Password must be at least 8 characters long')
+        if len(v) < 8 or len(v) > 255:
+            raise ValueError('Password must be between 8 and 255 characters')
         if not re.search(r'[A-Z]', v):
             raise ValueError('Password must contain at least one uppercase letter')
         if not re.search(r'[a-z]', v):

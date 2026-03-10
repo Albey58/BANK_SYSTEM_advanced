@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../components/common/Modal';
 import api from '../api/axios';
 import styles from './ModalForm.module.css';
@@ -11,8 +11,29 @@ const RegisterModal = ({ isOpen, onClose, onSwitchToLogin }) => {
         tax_id: '',
         doc_type: 'National_ID',
         doc_num: '',
-        initial_pin: ''
+        initial_pin: '',
+        branch_id: ''
     });
+
+    const [branches, setBranches] = useState([]);
+
+    useEffect(() => {
+        const fetchBranches = async () => {
+            if (!isOpen) return;
+            try {
+                const res = await api.get('/api/branches');
+                if (res.data.success) {
+                    setBranches(res.data.branches);
+                    if (res.data.branches.length > 0) {
+                        setFormData(prev => ({...prev, branch_id: res.data.branches[0].branch_id}));
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to fetch branches', err);
+            }
+        };
+        fetchBranches();
+    }, [isOpen]);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -187,16 +208,33 @@ const RegisterModal = ({ isOpen, onClose, onSwitchToLogin }) => {
                     </div>
                 </div>
 
-                <div className={styles.formGroup}>
-                    <label className={styles.label}>Tax ID / SSN</label>
-                    <input 
-                        name="tax_id"
-                        value={formData.tax_id}
-                        onChange={handleChange}
-                        className={styles.input} 
-                        placeholder="XXX-XX-XXXX"
-                        required
-                    />
+                <div className={styles.twoColumnGrid}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Tax ID / SSN</label>
+                        <input 
+                            name="tax_id"
+                            value={formData.tax_id}
+                            onChange={handleChange}
+                            className={styles.input} 
+                            placeholder="XXX-XX-XXXX"
+                            required
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Home Branch</label>
+                        <select 
+                            name="branch_id"
+                            value={formData.branch_id}
+                            onChange={handleChange}
+                            className={styles.select}
+                            required
+                        >
+                            <option value="" disabled>Select Branch</option>
+                            {branches.map(b => (
+                                <option key={b.branch_id} value={b.branch_id}>{b.branch_name}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
 
                 <div className={styles.twoColumnGrid}>

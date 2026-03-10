@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import HomePage from './pages/HomePage';
 import DashboardPage from './pages/DashboardPage';
 import TransactionsPage from './pages/TransactionsPage';
+import ServicesPage from './pages/ServicesPage';
 import AdminPage from './pages/AdminPage';
 import ProfilePage from './pages/ProfilePage';
 import Toast from './components/layout/Toast';
@@ -46,6 +47,11 @@ function App() {
                 <Route path="/transactions" element={
                   <ProtectedRoute>
                     <TransactionsPage />
+                  </ProtectedRoute>
+                } />
+                <Route path="/services" element={
+                  <ProtectedRoute>
+                    <ServicesPage />
                   </ProtectedRoute>
                 } />
                 <Route path="/admin" element={

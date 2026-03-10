@@ -90,6 +90,7 @@ const Navbar = ({ onOpenLogin, onOpenRegister }) => {
     const authLinks = [
         { label: 'Dashboard', to: '/dashboard'    },
         { label: 'Payments',  to: '/transactions' },
+        { label: 'Services',  to: '/services'     },
         { label: 'Profile',   to: '/profile'      },
         { label: 'Admin',     to: '/admin'        },
     ];

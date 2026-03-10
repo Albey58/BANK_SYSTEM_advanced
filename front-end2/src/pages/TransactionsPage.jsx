@@ -62,8 +62,8 @@ const TransactionsPage = () => {
         setIsLoading(true);
         try {
             const response = await api.post('/api/account/transfer', {
-                source_account_id: transferFrom,
-                target_account_id: transferTo,
+                from_account: transferFrom,
+                to_account: transferTo,
                 amount: parseFloat(transferAmount),
                 pin: transferPin
             });
