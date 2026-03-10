@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0F0F10;
+  --color-surface: #1C1C1E;
+  --color-primary: #FFFFFF;
+  --color-secondary: #A1A1AA;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #3B82F6;
+  
+  --font-sans: Poppins, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-primary antialiased font-sans;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Custom Scrollbar for inner elements if needed */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full hover:bg-secondary/50 transition-colors;
+  }
+}
+
+.glass-card {
+  @apply bg-surface/50 border border-border backdrop-blur-md rounded-xl;
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+}
+
+.input-field {
+  @apply bg-background border border-border rounded-lg px-4 py-3 w-full
+         focus:outline-none focus:ring-1 focus:ring-accent/50 focus:border-accent
+         transition-all duration-200 placeholder-secondary/50 text-sm;
+}
+
+.btn-primary {
+  @apply bg-white text-black font-medium px-4 py-2.5 rounded-lg
+         hover:bg-gray-200 active:scale-[0.98] transition-all duration-200
+         flex items-center justify-center gap-2 text-sm shadow-lg shadow-white/5;
+}
+
+.btn-secondary {
+  @apply bg-surface border border-border text-secondary font-medium px-4 py-2.5 rounded-lg
+         hover:text-primary hover:border-secondary/50 active:scale-[0.98] transition-all duration-200
+         flex items-center justify-center gap-2 text-sm;
+}

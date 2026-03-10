@@ -1,0 +1,42 @@
+.container {
+    padding: 6rem 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-main);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: 350px 1fr;
+        align-items: start;
+    }
+    
+    .formSection {
+        position: sticky;
+        top: 6rem;
+    }
+}
+
+.formSection {
+    width: 100%;
+}
+
+.statementSection {
+    width: 100%;
+}

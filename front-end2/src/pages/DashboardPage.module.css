@@ -1,0 +1,200 @@
+.dashboardContainer {
+    padding: 7rem 2rem 2rem; /* Account for fixed navbar */
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.greetingTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+.username {
+    color: var(--color-primary);
+}
+
+.date {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    width: 250px;
+    transition: all 0.2s;
+}
+
+.searchBar:focus-within {
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.08); /* Slightly lighter on focus */
+}
+
+.searchBar input {
+    background: transparent;
+    border: none;
+    color: var(--color-text-main);
+    margin-left: 0.5rem;
+    width: 100%;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.searchIcon {
+    color: var(--color-text-muted);
+}
+
+.iconBtn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+/* Stats Section */
+.statsSection {
+    margin-bottom: 2.5rem;
+}
+
+/* Grid Layout */
+.gridContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.mainColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sideColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.addButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Promo Card */
+.promoCard {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 30px -10px var(--color-primary);
+}
+
+.promoContent {
+    position: relative;
+    z-index: 2;
+}
+
+.promoContent h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.promoContent p {
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.promoBlob {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .searchBar {
+        width: 100%; /* Take available space */
+        max-width: none;
+    }
+
+    .sideColumn {
+        order: -1; /* Move quick actions to top on mobile?? Optional */
+    }
+}

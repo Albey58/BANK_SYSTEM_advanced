@@ -1,0 +1,318 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: var(--color-text-main);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input, .select {
+  padding: 1rem;
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 0;
+  color: #000;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.1s ease;
+  width: 100%;
+  box-shadow: 4px 4px 0px 0px #eee;
+}
+
+.select option {
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  box-shadow: 6px 6px 0px 0px #000;
+}
+
+.input::placeholder {
+    color: #888;
+    font-weight: normal; 
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+.row > * {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.infoBox {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 0;
+  border-left: 3px solid var(--color-primary);
+}
+
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.successText {
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.credentialBox {
+  width: 100%;
+  background: var(--color-bg-surface);
+  padding: 1.5rem;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.credential {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.credential:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.credentialLabel {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.credentialValue {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.credentialValue code {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0;
+  font-family: monospace;
+}
+
+.fullWidthBtn {
+  width: 100%;
+}
+
+/* Professional Modern Styles */
+.proInput {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 1rem 1.25rem;
+    width: 100%;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+    border-radius: 0;
+}
+
+.proInput:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.05);
+}
+
+.proLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.025em;
+}
+
+.proBtn {
+    background-color: #fff;
+    color: #000;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 0;
+    width: 100%;
+    border: 1px solid #fff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.025em;
+}
+
+.proBtn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.proBtn:active {
+    transform: translateY(0);
+}
+
+.proBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.proBtnSecondary {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.proBtnSecondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.proLink {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-underline-offset: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.proLink:hover {
+    text-decoration-color: #fff;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.modalContainer {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.submitBtn {
+    background-color: #fff;
+    color: #000;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 0;
+    width: 100%;
+    border: 1px solid #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submitBtn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btnSecondary {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btnSecondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    padding: 1rem;
+    border-radius: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.successPanel {
+    background-color: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 1.5rem;
+    border-radius: 0;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.twoColumnGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    font-family: monospace;
+    font-size: 1rem;
+    border-radius: 0;
+    flex-grow: 1;
+}
+
+.copyBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0;
+    transition: all 0.2s;
+}
+
+.copyBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+

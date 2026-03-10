@@ -1,0 +1,85 @@
+.section {
+    padding: 4rem 5%;
+    background-color: var(--bg-hover-dark); /* Darker background with emphasis */
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.content {
+    flex: 1;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+    /* Clean text, no gradient here for serious tone */
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 600px;
+}
+
+.certificates {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.certItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.icon {
+    color: var(--status-success);
+    margin-top: 0.25rem;
+}
+
+.certTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.certDesc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    
+    .certificates {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .certificates {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

@@ -1,0 +1,127 @@
+.section {
+    padding: 6rem 5%;
+    background-color: var(--bg-hover-dark); /* Darker section */
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.textColumn {
+    flex: 1;
+    max-width: 500px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.calculatorBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculatorBtn:hover {
+    background-color: var(--text-secondary);
+    transform: translateY(-2px);
+}
+
+.ratesGrid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.rateCard {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.rateCard:hover {
+    border-color: var(--text-secondary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.rateHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.rateIcon {
+    color: var(--accent-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rateType {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.rateValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.rateTerm {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .ratesGrid {
+        width: 100%;
+    }
+    
+    .textColumn {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+}

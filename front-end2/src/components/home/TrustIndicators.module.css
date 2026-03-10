@@ -1,0 +1,103 @@
+.section {
+    padding: 4rem 1.5rem;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.statGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statLabel {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.statValue {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.statSub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.partnersGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 4rem;
+    opacity: 0.7;
+    margin-top: 1rem;
+}
+
+.partnerLogo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    /* For actual implementation, replace text with SVG logos */
+    filter: grayscale(100%) brightness(1.2);
+    transition: opacity 0.3s;
+    cursor: default;
+}
+
+.partnersGrid:hover .partnerLogo {
+    opacity: 0.3;
+}
+
+.partnersGrid:hover .partnerLogo:hover {
+    opacity: 1;
+}
+
+.certifications {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.certItem {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Add a checkmark icon via pseudo-element */
+.certItem::before {
+    content: "✓";
+    margin-right: 0.25rem;
+    color: white;
+}
+
+.separator {
+    color: var(--border-light);
+}
+
+@media (max-width: 768px) {
+    .partnersGrid {
+        gap: 1.5rem 2rem;
+    }
+}

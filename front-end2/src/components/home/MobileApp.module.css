@@ -1,0 +1,245 @@
+.section {
+    padding: 6rem 5%;
+    background-color: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+.description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.check {
+    color: var(--status-success);
+    font-weight: bold;
+}
+
+.badges {
+    display: flex;
+    gap: 1rem;
+}
+
+.storeBtn {
+    background-color: var(--surface-bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.storeBtn:hover {
+    background-color: var(--bg-hover);
+    transform: translateY(-2px);
+    border-color: var(--text-secondary);
+}
+
+.btnText {
+    display: flex;
+    flex-direction: column;
+}
+
+.smallText {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.largeText {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Mockup Styles */
+.mockupWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Background blob */
+.mockupWrapper::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.phone {
+    width: 300px;
+    height: 600px;
+    background-color: #000;
+    border: 8px solid #333;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* Notch */
+.phone::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 24px;
+    background-color: #333;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    z-index: 10;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    padding: 2.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.appHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.balanceCard {
+    background: linear-gradient(135deg, #333 0%, #111 100%);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #444;
+}
+
+.balanceLabel {
+    font-size: 0.875rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.balanceAmount {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.actionBtn {
+    width: 70px;
+    height: 70px;
+    background-color: #222;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.transactionList {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.transaction {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    border: 1px solid #2a2a2a;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .content {
+        max-width: 100%;
+    }
+    
+    .features {
+        justify-content: center;
+    }
+    
+    .badges {
+        justify-content: center;
+    }
+    
+    .mockupWrapper {
+        margin-top: 2rem;
+    }
+}

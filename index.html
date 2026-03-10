@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet Bank - Your Financial Universe</title>
+    <meta name="description" content="Experience banking reimagined with Comet Bank - secure, modern, and intuitive financial management">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cosmic-bg">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+        <div class="gradient-orb orb1"></div>
+        <div class="gradient-orb orb2"></div>
+        <div class="gradient-orb orb3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" stroke="url(#gradient1)" stroke-width="2"/>
+                    <path d="M20 8L25 15L20 22L15 15L20 8Z" fill="url(#gradient2)"/>
+                    <path d="M20 18L25 25L20 32L15 25L20 18Z" fill="url(#gradient3)"/>
+                    <defs>
+                        <linearGradient id="gradient1" x1="0" y1="0" x2="40" y2="40">
+                            <stop offset="0%" stop-color="#667eea"/>
+                            <stop offset="100%" stop-color="#764ba2"/>
+                        </linearGradient>
+                        <linearGradient id="gradient2" x1="15" y1="8" x2="25" y2="22">
+                            <stop offset="0%" stop-color="#f093fb"/>
+                            <stop offset="100%" stop-color="#f5576c"/>
+                        </linearGradient>
+                        <linearGradient id="gradient3" x1="15" y1="18" x2="25" y2="32">
+                            <stop offset="0%" stop-color="#4facfe"/>
+                            <stop offset="100%" stop-color="#00f2fe"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="brand-name">Comet Bank</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#dashboard" class="nav-link" data-section="dashboard">Dashboard</a>
+                <a href="#transactions" class="nav-link" data-section="transactions">Transactions</a>
+                <a href="#admin" class="nav-link" data-section="admin">Admin</a>
+                <a href="#" class="nav-link" id="profileLink" style="display: none;" onclick="document.getElementById('profileSettingsModal').classList.add('active'); return false;">Profile</a>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <button class="btn-secondary" id="loginBtn">Login</button>
+                <button class="btn-primary" id="registerBtn">Get Started</button>
+                <button class="btn-secondary" id="logoutBtn" style="display: none;">Logout</button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        
+        <!-- HOME SECTION -->
+        <section class="section active" id="home">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Your Financial Universe
+                        <span class="gradient-text">Awaits</span>
+                    </h1>
+                    <p class="hero-subtitle">Experience banking reimagined. Secure, fast, and beautifully simple.</p>
+                    <div class="hero-actions">
+                        <button class="btn-hero-primary" id="heroGetStarted">
+                            Launch Your Journey
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <button class="btn-hero-secondary" id="learnMore">
+                            Explore Features
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="card-icon">💰</div>
+                            <h3>Smart Savings</h3>
+                            <p>4% APY on all savings accounts</p>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="card-icon">⚡</div>
+                            <h3>Instant Transfers</h3>
+                            <p>Lightning-fast transactions</p>
+                        </div>
+                    </div>
+                    <div class="floating-card card-3">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="card-icon">🔒</div>
+                            <h3>Bank-Grade Security</h3>
+                            <p>Your money, protected</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="features-section">
+                <h2 class="section-title">Why Choose <span class="gradient-text">Comet Bank</span></h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌟</div>
+                        <h3>Instant Account Setup</h3>
+                        <p>Get started in minutes with our streamlined registration process</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Real-Time Analytics</h3>
+                        <p>Track your finances with live dashboards and detailed statements</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Smart Fraud Detection</h3>
+                        <p>AI-powered security flags suspicious transactions automatically</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💎</div>
+                        <h3>Premium Experience</h3>
+                        <p>Enjoy a beautiful, intuitive interface designed for you</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD SECTION -->
+        <section class="section" id="dashboard">
+            <div class="section-header">
+                <h1 class="page-title">Your Dashboard</h1>
+                <p class="page-subtitle">Welcome back! Here's your financial overview</p>
+            </div>
+
+            <!-- Dashboard Loading State -->
+            <div id="dashboardLoading" class="glass-card" style="display: none; text-align: center;">
+                <h3>Loading your financial universe...</h3>
+                <div class="loader"></div>
+            </div>
+            
+            <!-- Dashboard Login Prompt -->
+            <div id="dashboardLoginPrompt" class="glass-card" style="text-align: center;">
+                <div class="card-body">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🔒</div>
+                    <h3>Please Login to View Dashboard</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Access your accounts securely</p>
+                    <button class="btn-primary" onclick="document.getElementById('loginBtn').click()">
+                        Login Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Content (Hidden initially) -->
+            <div id="dashboardContent" class="dashboard-content" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👤</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Account Holder</p>
+                            <h3 class="stat-value" id="userName">-</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Total Balance</p>
+                            <h3 class="stat-value" id="totalBalance">$0.00</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <p class="stat-label">Verification Status</p>
+                            <h3 class="stat-value" id="verificationStatus">-</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accounts List -->
+                <div class="glass-card">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3>Your Accounts</h3>
+                        <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="document.getElementById('openAccountModal').classList.add('active')">
+                            + New Account
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="accountsList" class="accounts-list">
+                            <!-- Accounts will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRANSACTIONS SECTION -->
+        <section class="section" id="transactions">
+            <div class="section-header">
+                <h1 class="page-title">Transactions</h1>
+                <p class="page-subtitle">Deposit, transfer, and view your transaction history</p>
+            </div>
+
+            <div class="transaction-grid">
+                <!-- Deposit Card -->
+                <div class="glass-card">
+                    <div class="card-header">
+                        <div class="header-icon">💵</div>
+                        <h3>Deposit Funds</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label for="depositAccountId">Account ID</label>
+                            <input type="text" id="depositAccountId" placeholder="Enter account ID" class="input-field">
+                        </div>
+                        <div class="input-group">
+                            <label for="depositAmount">Amount</label>
+                            <input type="number" id="depositAmount" placeholder="0.00" class="input-field" step="0.01" min="0">
+                        </div>
+                        <button class="btn-primary" id="depositBtn">
+                            Deposit Money
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 5v14M5 12h14" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div id="depositResult" class="result-message"></div>
+                    </div>
+                </div>
+
+                <!-- Transfer Card -->
+                <div class="glass-card">
+                    <div class="card-header">
+                        <div class="header-icon">🔄</div>
+                        <h3>Transfer Funds</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label for="fromAccount">From Account</label>
+                            <input type="text" id="fromAccount" placeholder="Sender account ID" class="input-field">
+                        </div>
+                        <div class="input-group">
+                            <label for="toAccount">To Account</label>
+                            <input type="text" id="toAccount" placeholder="Recipient account ID" class="input-field">
+                        </div>
+                        <div class="input-group">
+                            <label for="transferAmount">Amount</label>
+                            <input type="number" id="transferAmount" placeholder="0.00" class="input-field" step="0.01" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="transferPin">Transaction PIN</label>
+                            <input type="password" id="transferPin" placeholder="Enter 4-6 digit PIN" class="input-field" maxlength="6">
+                        </div>
+                        <div class="info-banner">
+                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <p>1% service fee applies to all transfers</p>
+                        </div>
+                        <button class="btn-primary" id="transferBtn">
+                            Transfer Money
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div id="transferResult" class="result-message"></div>
+                    </div>
+                </div>
+
+                <!-- Withdrawal Card -->
+                <div class="glass-card">
+                    <div class="card-header">
+                        <div class="header-icon">💸</div>
+                        <h3>Withdraw Funds</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label for="withdrawAccountId">Account ID</label>
+                            <input type="text" id="withdrawAccountId" placeholder="Enter account ID" class="input-field">
+                        </div>
+                        <div class="input-group">
+                            <label for="withdrawAmount">Amount</label>
+                            <input type="number" id="withdrawAmount" placeholder="0.00" class="input-field" step="0.01" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="withdrawPin">Transaction PIN</label>
+                            <input type="password" id="withdrawPin" placeholder="4-6 digit PIN" class="input-field" maxlength="6">
+                        </div>
+                        <button class="btn-primary" id="withdrawBtn" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);">
+                            Withdraw
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 5v14M5 12h14" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div id="withdrawResult" class="result-message"></div>
+                    </div>
+                </div>
+
+                <!-- Statement Card -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <div class="header-icon">📋</div>
+                        <h3>Account Statement</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="statement-controls">
+                            <div class="input-group">
+                                <label for="statementAccountId">Account ID</label>
+                                <input type="text" id="statementAccountId" placeholder="Enter account ID" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label for="statementDays">Period (Days)</label>
+                                <select id="statementDays" class="input-field">
+                                    <option value="7">Last 7 days</option>
+                                    <option value="30" selected>Last 30 days</option>
+                                    <option value="90">Last 90 days</option>
+                                    <option value="365">Last year</option>
+                                </select>
+                            </div>
+                            <button class="btn-primary" id="statementBtn">
+                                Load Statement
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="statementResult" class="statement-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN SECTION -->
+        <section class="section" id="admin">
+            <div class="section-header">
+                <h1 class="page-title">Admin Panel</h1>
+                <p class="page-subtitle">Manage system-wide operations and view audit logs</p>
+            </div>
+
+            <div class="admin-grid">
+                <!-- Apply Interest -->
+                <div class="glass-card">
+                    <div class="card-header">
+                        <div class="header-icon">📈</div>
+                        <h3>Apply Interest</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Apply daily interest (4% APY) to all active savings accounts</p>
+                        <button class="btn-primary" id="applyInterestBtn">
+                            Apply Interest Now
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div id="interestResult" class="result-message"></div>
+                    </div>
+                </div>
+
+                <!-- Audit Logs -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <div class="header-icon">📊</div>
+                        <h3>Audit Logs</h3>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn-primary" id="loadAuditBtn">
+                            Load Audit Logs
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div id="auditLogsResult" class="audit-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-overlay" id="registerOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Your Account</h2>
+                <button class="modal-close" id="closeRegister">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="regFullName">Full Name</label>
+                    <input type="text" id="regFullName" placeholder="John Doe" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" placeholder="john@example.com" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" placeholder="••••••••" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="regTaxId">Tax ID</label>
+                    <input type="text" id="regTaxId" placeholder="XXX-XX-XXXX" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="regDocType">Document Type</label>
+                    <select id="regDocType" class="input-field">
+                        <option value="National_ID">National ID</option>
+                        <option value="Passport">Passport</option>
+                        <option value="Drivers_License">Driver's License</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="regDocNum">Document Number</label>
+                    <input type="text" id="regDocNum" placeholder="ABC123456" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="regPin">Create PIN (4-6 digits)</label>
+                    <input type="password" id="regPin" placeholder="1234" class="input-field" maxlength="6">
+                </div>
+                <button class="btn-primary full-width" id="submitRegister">
+                    Create Account
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div id="registerResult" class="result-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay" id="loginOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="modal-close" id="closeLogin">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="john@example.com" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" class="input-field">
+                </div>
+                <button class="btn-primary full-width" id="submitLogin">
+                    Login to Account
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div id="loginResult" class="result-message"></div>
+                <p class="text-center mt-3">
+                    Don't have an account? <a href="#" id="openRegisterFromLogin" style="color: var(--primary-blue);">Register here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <div class="toast-icon" id="toastIcon">✓</div>
+            <p class="toast-message" id="toastMessage"></p>
+        </div>
+        <button class="toast-close" id="toastClose">×</button>
+    </div>
+
+    <!-- Open Account Modal -->
+    <div class="modal" id="openAccountModal">
+        <div class="modal-overlay" onclick="document.getElementById('openAccountModal').classList.remove('active')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Open New Account</h2>
+                <button class="modal-close" onclick="document.getElementById('openAccountModal').classList.remove('active')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="newAccType">Account Type</label>
+                    <select id="newAccType" class="input-field">
+                        <option value="savings">Savings Account</option>
+                        <option value="checking">Checking Account</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="newAccPin">Set Account PIN (4-6 digits)</label>
+                    <input type="password" id="newAccPin" placeholder="1234" class="input-field" maxlength="6">
+                </div>
+                <button class="btn-primary full-width" id="submitOpenAccount">
+                    Create Account
+                </button>
+                <div id="openAccountResult" class="result-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Settings Modal -->
+    <div class="modal" id="profileSettingsModal">
+        <div class="modal-overlay" onclick="document.getElementById('profileSettingsModal').classList.remove('active')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Profile & Security</h2>
+                <button class="modal-close" onclick="document.getElementById('profileSettingsModal').classList.remove('active')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="updateFullName">Full Name</label>
+                    <input type="text" id="updateFullName" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="updateEmail">Email Address</label>
+                    <input type="email" id="updateEmail" class="input-field">
+                </div>
+                <button class="btn-primary full-width" id="submitProfileUpdate">
+                    Update Profile
+                </button>
+                <div id="profileUpdateResult" class="result-message"></div>
+                
+                <hr style="margin: 2rem 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+                
+                <h3>Security Settings</h3>
+                <button class="btn-secondary full-width" onclick="document.getElementById('profileSettingsModal').classList.remove('active'); document.getElementById('resetPinModal').classList.add('active');" style="margin-top: 1rem;">
+                    Reset Account PIN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset PIN Modal -->
+    <div class="modal" id="resetPinModal">
+        <div class="modal-overlay" onclick="document.getElementById('resetPinModal').classList.remove('active')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reset Account PIN</h2>
+                <button class="modal-close" onclick="document.getElementById('resetPinModal').classList.remove('active')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="resetPinAccountId">Account ID</label>
+                    <input type="text" id="resetPinAccountId" placeholder="Enter account ID" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label for="resetPinNewPin">New PIN (4-6 digits)</label>
+                    <input type="password" id="resetPinNewPin" placeholder="1234" class="input-field" maxlength="6">
+                </div>
+                <div class="input-group">
+                    <label for="resetPinPassword">Current Password</label>
+                    <input type="password" id="resetPinPassword" placeholder="Verify identity" class="input-field">
+                </div>
+                <button class="btn-primary full-width" id="submitResetPin">
+                    Update PIN
+                </button>
+                <div id="resetPinResult" class="result-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #000000;
+  height: 80px;
+  transition: border-color 0.3s ease;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.navbarScrolled {
+  border-bottom: 2px solid #ffffff;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.logoIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  transition: background-color 0.3s;
+}
+
+.logoIconInner {
+  width: 0.875rem;
+  height: 0.875rem;
+  background: #000000;
+  transition: background-color 0.3s;
+}
+
+.logo:hover .logoIcon {
+  background: #000000;
+  rotate: 90deg;
+  transition: all 0.3s ease;
+}
+
+.logo:hover .logoIconInner {
+  background: #ffffff;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  height: 1.5rem; /* Fixed height to match line-height */
+  line-height: 1.5rem;
+}
+
+.navLinkText {
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+}
+
+.navLink:hover .navLinkText {
+  transform: translateY(-100%);
+}
+
+.navLinkText::after {
+  content: attr(data-text);
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.navLinkActive .navLinkText {
+  font-weight: 700;
+  border-bottom: 2px solid white;
+}
+
+.divider {
+  width: 2px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loginBtn {
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.loginBtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.loginBtn:hover::after {
+  width: 100%;
+}
+
+.registerBtn {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  border-radius: 0px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.registerBtn:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #ffffff;
+}
+
+.registerBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #ffffff;
+}
+
+.logoutBtn {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  border-radius: 0px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #ffffff;
+}
+
+.logoutBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #ffffff;
+}
+
+.mobileMenuBtn {
+  display: none;
+  background: transparent;
+  border: 2px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.mobileMenuBtn:hover {
+  border-color: #ffffff;
+}
+
+.mobileDrawer {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: #000000;
+  border-bottom: 2px solid #ffffff;
+  padding: 1.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileDrawer.open {
+  display: flex;
+}
+
+.mobileNavLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 1rem;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.mobileNavLink:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #000000;
+}
+
+.mobileDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0.5rem 0;
+}
+
+.mobileLoginBtn {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mobileLoginBtn:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #000000;
+}
+
+.mobileRegisterBtn {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid #ffffff;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.mobileRegisterBtn:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #ffffff;
+}
+
+.mobileRegisterBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #ffffff;
+}
+
+.mobileLogoutBtn {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid #ffffff;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+  cursor: pointer;
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+.mobileLogoutBtn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #ffffff;
+}
+
+.mobileLogoutBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .desktopNav {
+    display: none;
+  }
+  
+  .mobileMenuBtn {
+    display: block;
+  }
+}
